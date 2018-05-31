@@ -64,9 +64,9 @@ public class LogUtil {
 		} else {
 
 		}
-		/*if(!BuildConfig.DEBUG){
+		if(!BuildConfig.DEBUG){
 			currentStage=RELEASE;
-		}*/
+		}
 	}
 	
 	public static void info(Class clazz, String msg) {
