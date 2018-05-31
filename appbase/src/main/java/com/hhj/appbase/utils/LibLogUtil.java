@@ -18,7 +18,7 @@ import java.util.Date;
  * @author huanyu
  *
  */
-public class LogUtil {
+public class LibLogUtil {
 	/**
 	 * 开发阶段
 	 */
@@ -39,7 +39,7 @@ public class LogUtil {
 	/**
 	 * 当前阶段标示
 	 */
-	private static int currentStage = DEVELOP;
+	private static int currentStage = RELEASE;
 	private static String TAG="LOG";
 	private static String path;
 	private static File file;

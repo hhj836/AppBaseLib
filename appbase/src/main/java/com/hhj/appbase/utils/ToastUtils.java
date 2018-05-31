@@ -51,7 +51,7 @@ public class ToastUtils {
             toast.setGravity(Gravity.CENTER, 0, 0);
             toast.show();
         } catch (Exception e) {
-            LogUtil.info(ToastUtils.class,e.getMessage());
+            LibLogUtil.info(ToastUtils.class,e.getMessage());
         }
     }
 
@@ -66,7 +66,7 @@ public class ToastUtils {
             toast.setGravity(Gravity.CENTER, 0, 0);
             toast.show();
         } catch (Exception e) {
-            LogUtil.info(ToastUtils.class,e.getMessage());
+            LibLogUtil.info(ToastUtils.class,e.getMessage());
         }
     }
 

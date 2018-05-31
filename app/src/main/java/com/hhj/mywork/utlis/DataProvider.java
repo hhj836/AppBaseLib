@@ -1,8 +1,6 @@
 package com.hhj.mywork.utlis;
 
 
-import com.hhj.appbase.utils.LogUtil;
-
 import java.util.ArrayList;
 
 /**

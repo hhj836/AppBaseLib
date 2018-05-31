@@ -2,7 +2,6 @@ package com.hhj.mywork.presenter;
 
 import android.animation.Animator;
 import android.animation.ObjectAnimator;
-import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.view.View;
 
@@ -11,7 +10,6 @@ import com.chad.library.adapter.base.BaseViewHolder;
 import com.chad.library.adapter.base.animation.BaseAnimation;
 import com.hhj.appbase.list.BaseListPresenter;
 import com.hhj.appbase.list.ListConfig;
-import com.hhj.appbase.utils.LogUtil;
 import com.hhj.appbase.utils.ToastUtils;
 import com.hhj.mywork.activity.ImgListActivity;
 import com.hhj.mywork.adapter.ImgListAdapter;

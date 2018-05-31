@@ -4,14 +4,12 @@ import android.graphics.Bitmap;
 import android.util.DisplayMetrics;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
-import com.hhj.appbase.utils.LogUtil;
 import com.hhj.mywork.R;
 import com.hhj.mywork.utlis.Picture;
 

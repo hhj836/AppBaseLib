@@ -6,12 +6,10 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.hhj.appbase.base.BasePresenter;
 import com.hhj.appbase.observer.DataObserver;
-import com.hhj.appbase.utils.LogUtil;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 
-import java.util.ArrayList;
 import java.util.List;
 import io.reactivex.Observer;
 

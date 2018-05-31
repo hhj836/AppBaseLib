@@ -3,7 +3,7 @@ package com.hhj.appbase.observer;
 import android.content.Context;
 
 import com.hhj.appbase.exception.ApiException;
-import com.hhj.appbase.utils.LogUtil;
+import com.hhj.appbase.utils.LibLogUtil;
 import com.hhj.appbase.utils.ToastUtils;
 
 import io.reactivex.Observer;
@@ -30,7 +30,7 @@ public abstract  class DataObserver<M> implements Observer<M> {
             ApiException error= (ApiException) e;
             ToastUtils.showShortToast(context,error.getMsg());
         }else{
-            LogUtil.error(getClass(),"error----"+e.getMessage());
+            LibLogUtil.error(getClass(),"error----"+e.getMessage());
         }
     }
 
