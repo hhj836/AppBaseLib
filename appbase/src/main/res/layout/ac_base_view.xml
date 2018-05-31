@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:fitsSystemWindows="true"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+ >
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.design.widget.AppBarLayout
+        android:fadingEdge="none"
+        app:elevation="0dp"
+        android:id="@+id/appbar_base"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <RelativeLayout
+            android:id="@+id/rl_title_base"
+            app:layout_scrollFlags="scroll|enterAlways"
+            android:background="@color/colorPrimary"
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+            <com.andexert.library.RippleView
+                app:rv_rippleDuration="@integer/rippleDuration"
+                android:layout_centerVertical="true"
+                android:id="@+id/btn_left_base"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                rv_centered="true">
+
+                <TextView
+                    android:textColor="@android:color/white"
+                    android:textSize="14sp"
+                    android:layout_centerInParent="true"
+                    android:id="@+id/tv_left_base"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </com.andexert.library.RippleView>
+
+            <RelativeLayout
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_toRightOf="@+id/btn_left_base"
+                android:layout_toLeftOf="@+id/btn_right_base"
+                android:layout_centerVertical="true"
+                android:gravity="center"
+                android:id="@+id/rl_title_content_base"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            <TextView
+                android:singleLine="true"
+                android:ellipsize="end"
+                android:maxWidth="200dp"
+                android:gravity="center"
+                android:id="@+id/tv_title_base"
+                android:text="标题"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:gravity="center"
+                android:visibility="gone"
+                android:id="@+id/btn_tv_right"
+                android:layout_marginRight="10dp"
+                android:textColor="@android:color/white"
+                android:text="发送"
+                android:textSize="14sp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_width="45dp"
+                android:layout_height="25dp" />
+            <com.andexert.library.RippleView
+                app:rv_rippleDuration="@integer/rippleDuration"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:id="@+id/btn_right_base"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                rv_centered="true">
+                <View
+                    android:id="@+id/guide_empty"
+                    android:layout_centerInParent="true"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"></View>
+                <TextView
+                    android:gravity="center"
+                    android:textColor="@android:color/white"
+                    android:textSize="14sp"
+                    android:layout_centerInParent="true"
+                    android:id="@+id/tv_right_base"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </com.andexert.library.RippleView>
+
+        </RelativeLayout>
+    </android.support.design.widget.AppBarLayout>
+
+    <FrameLayout
+        android:background="@color/global_bg"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:fillViewport="true"
+        android:id="@+id/fm_content_base"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </FrameLayout>
+</android.support.design.widget.CoordinatorLayout>
+</RelativeLayout>
