@@ -44,7 +44,7 @@ public abstract class BeamAppCompatActivity<PresenterType extends Presenter> ext
     protected void onDestroy() {
         super.onDestroy();
         if (activityLifeCycleDelegate!=null)activityLifeCycleDelegate.onDestroy();
-        helper.onDestroyView();
+                helper.onDestroyView();
         if (isFinishing())
             helper.onDestroy();
     }

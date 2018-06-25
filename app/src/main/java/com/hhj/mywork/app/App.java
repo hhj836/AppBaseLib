@@ -2,15 +2,25 @@ package com.hhj.mywork.app;
 
 
 import android.app.Application;
+import android.content.Context;
 import android.text.TextUtils;
+import android.util.Log;
 
 import com.hhj.appbase.base.ActivityLifeCycleDelegate;
 import com.hhj.appbase.base.ActivityLifeCycleDelegateProvider;
 import com.hhj.appbase.base.Beam;
 import com.hhj.appbase.base.BeamAppCompatActivity;
-import com.hhj.appbase.baseconfig.BaseConfig;
 import com.hhj.mywork.ActivityDelegate;
 import com.hhj.mywork.R;
+import com.scwang.smartrefresh.header.StoreHouseHeader;
+import com.scwang.smartrefresh.layout.SmartRefreshLayout;
+import com.scwang.smartrefresh.layout.api.DefaultRefreshFooterCreator;
+import com.scwang.smartrefresh.layout.api.DefaultRefreshHeaderCreator;
+import com.scwang.smartrefresh.layout.api.RefreshFooter;
+import com.scwang.smartrefresh.layout.api.RefreshHeader;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.footer.ClassicsFooter;
+import com.scwang.smartrefresh.layout.header.ClassicsHeader;
 
 import skin.support.SkinCompatManager;
 import skin.support.app.SkinCardViewInflater;
@@ -18,7 +28,6 @@ import skin.support.constraint.app.SkinConstraintViewInflater;
 import skin.support.design.app.SkinMaterialViewInflater;
 import skin.support.utils.SkinPreference;
 
-import static skin.support.SkinCompatManager.SKIN_LOADER_STRATEGY_NONE;
 
 
 /**
@@ -26,6 +35,31 @@ import static skin.support.SkinCompatManager.SKIN_LOADER_STRATEGY_NONE;
  */
 
 public class App extends Application {
+    static {
+        //设置全局的Header构建器
+        SmartRefreshLayout.setDefaultRefreshHeaderCreator(new DefaultRefreshHeaderCreator() {
+            @Override
+            public RefreshHeader createRefreshHeader(Context context, RefreshLayout layout) {
+                layout.setPrimaryColorsId(R.color.colorPrimary, android.R.color.white);//全局设置主题颜色
+                StoreHouseHeader houseHeader=new StoreHouseHeader(context);
+                houseHeader.initWithString("WWWWWW");
+                return new ClassicsHeader(context);//.setTimeFormat(new DynamicTimeFormat("更新于 %s"));//指定为经典Header，默认是 贝塞尔雷达Header
+            }
+        });
+        //设置全局的Footer构建器
+        SmartRefreshLayout.setDefaultRefreshFooterCreator(new DefaultRefreshFooterCreator() {
+            @Override
+            public RefreshFooter createRefreshFooter(Context context, RefreshLayout layout) {
+                //指定为经典Footer，默认是 BallPulseFooter
+                ClassicsFooter footer= new ClassicsFooter(context);
+                footer.setFinishDuration(0);
+                ClassicsFooter.REFRESH_FOOTER_LOADING="Σ(っ °Д °;)っ";
+                ClassicsFooter.REFRESH_FOOTER_NOTHING="╮(๑•́ ₃•̀๑)╭木有了~";
+
+                return footer;
+            }
+        });
+    }
     @Override
     public void onCreate() {
         super.onCreate();
@@ -49,10 +83,7 @@ public class App extends Application {
                 .loadSkin();
         String skin = SkinPreference.getInstance().getSkinName();
         int strategy = SkinPreference.getInstance().getSkinStrategy();
-        if (TextUtils.isEmpty(skin) || strategy == SKIN_LOADER_STRATEGY_NONE) {
-            BaseConfig.DEFAULT.colorPrimary= getApplicationContext().getResources().getColor(R.color.global_color);
-            BaseConfig.DEFAULT.colorContent=getApplicationContext().getResources().getColor(R.color.global_bg);
-        }
-        BaseConfig.DEFAULT.titleBarLeftResId= R.mipmap.navi_back_white;
+        Log.d("App","App=="+skin);
+        Log.d("App","App=="+strategy);
     }
 }

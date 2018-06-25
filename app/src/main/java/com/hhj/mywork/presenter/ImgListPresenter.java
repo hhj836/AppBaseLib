@@ -11,6 +11,7 @@ import com.chad.library.adapter.base.animation.BaseAnimation;
 import com.hhj.appbase.list.BaseListPresenter;
 import com.hhj.appbase.list.ListConfig;
 import com.hhj.appbase.utils.ToastUtils;
+import com.hhj.mywork.R;
 import com.hhj.mywork.activity.ImgListActivity;
 import com.hhj.mywork.adapter.ImgListAdapter;
 import com.hhj.mywork.utlis.DataProvider;
@@ -52,7 +53,7 @@ public class ImgListPresenter extends BaseListPresenter<ImgListActivity,Picture>
 
                  };
             }
-        }).build();
+        }).setContentResId(R.layout.common_list).build();
     }
 
     @Override

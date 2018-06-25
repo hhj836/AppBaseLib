@@ -11,7 +11,7 @@ public class ListConfig  {
     public boolean mRefreshAble=true;
     public boolean mLoadMoreAble=true;
     public boolean mAutoLoadMore=false;
-    //listActivity resId  必须包含SmartRefreshLayout和RecyclerView且id一致
+    //listActivity resId  必须包含SmartRefreshLayout和RecyclerView且id与baseListActivity查找id一致
     public int mContainerResId;
     //下拉刷新主色调
     public int  srlPrimaryColor;
@@ -56,6 +56,10 @@ public class ListConfig  {
         }
         public Builder setEmptyResId(int resId){
             target.mContainerEmptyResId=resId;
+            return  Builder.this;
+        }
+        public Builder setContentResId(int resId){
+            target.mContainerResId=resId;
             return  Builder.this;
         }
         public Builder setAnimType(int animationType){

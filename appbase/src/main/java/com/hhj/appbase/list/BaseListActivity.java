@@ -92,8 +92,7 @@ public abstract class BaseListActivity<P extends BaseListPresenter> extends Base
         }
 
         recyclerView.setAdapter(getPresenter().getAdapter());
-        getPresenter().onRefresh(refreshLayout);
-
+        refreshLayout.autoRefresh();
     }
 
     @Override

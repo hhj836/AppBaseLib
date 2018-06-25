@@ -16,11 +16,13 @@ import io.reactivex.disposables.Disposable;
 
 public abstract  class DataObserver<M> implements Observer<M> {
     private Context context;
+    protected Disposable disposable;
     public DataObserver(Context context){
         this.context=context;
     }
     @Override
     public void onSubscribe(@NonNull Disposable d) {
+        disposable=d;
 
     }
 
@@ -32,10 +34,15 @@ public abstract  class DataObserver<M> implements Observer<M> {
         }else{
             LibLogUtil.error(getClass(),"error----"+e.getMessage());
         }
+        if (disposable != null && !disposable.isDisposed()) {
+            disposable.dispose();
+        }
     }
 
     @Override
     public void onComplete() {
-
+        if (disposable != null && !disposable.isDisposed()) {
+            disposable.dispose();
+        }
     }
 }
