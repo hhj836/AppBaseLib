@@ -29,13 +29,14 @@ import io.reactivex.ObservableOnSubscribe;
 import io.reactivex.annotations.NonNull;
 import skin.support.SkinCompatManager;
 import skin.support.utils.SkinPreference;
+import skin.support.widget.SkinCompatSupportable;
 
 
 /**
  * Created by hhj on 2018/3/24.
  */
 @RequiresPresenter(ImgListPresenter.class)
-public class ImgListActivity extends BaseListActivity<ImgListPresenter> {
+public class ImgListActivity extends BaseListActivity<ImgListPresenter> implements SkinCompatSupportable {
     @Override
     public boolean isSlideTitleBar() {
         return true;
@@ -81,6 +82,12 @@ public class ImgListActivity extends BaseListActivity<ImgListPresenter> {
                 }
             }
         });
+        commonTitleBar.setDoubleClickListener(new CommonTitleBar.OnTitleBarDoubleClickListener() {
+            @Override
+            public void onClicked(View v) {
+                recyclerView.smoothScrollToPosition(0);
+            }
+        });
 
     }
     public static float convertDpToPixel(float dp, Context context){
@@ -94,5 +101,10 @@ public class ImgListActivity extends BaseListActivity<ImgListPresenter> {
     protected void onDestroy() {
         super.onDestroy();
         Log.d("ImgListActivity","onDestroy");
+    }
+
+    @Override
+    public void applySkin() {
+        Log.d("ImgListActivity","applySkin");
     }
 }

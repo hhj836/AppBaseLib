@@ -13,17 +13,19 @@ import static com.trello.rxlifecycle2.internal.Preconditions.checkNotNull;
  * Created by hhj on 2018/3/23.
  */
 
-public class BasePresenter<ViewType> extends Presenter<ViewType> {
+public abstract class BasePresenter<ViewType> extends Presenter<ViewType> {
     public static final String KEY_ID = "intent_id";
     public static final String KEY_DATA = "intent_data";
+    public  void initData(){
+        if(getView() instanceof ViewInterface){
+            ((ViewInterface) getView()).hideEmptyView();
+            ((ViewInterface) getView()).hideNoNetView();
+        }
+    };
     public Activity getActivity(){
         Activity activity=null;
-        if(getView() instanceof Activity){
-            activity= (Activity) getView();
-        }else if(getView() instanceof Fragment){
-            activity=((Fragment) getView()).getActivity();
-        }else if(getView() instanceof IListView){
-            activity=((IListView) getView()).getMActivity();
+        if(getView() instanceof ViewInterface) {
+            activity =((ViewInterface) getView()).getActivityImp();
         }
         checkNotNull(activity,"activity is null--->"+getView().getClass().getSimpleName());
         return  activity;

@@ -36,7 +36,7 @@ public class ModelManager {
                 try{
                     models[i] = Class.forName(modelStrs[i].trim());
                 }catch (ClassNotFoundException e){
-                    Log.e("Beam",modelStrs[i].trim()+" Class No Found!");
+                   // Log.e("Beam",modelStrs[i].trim()+" Class No Found!");
                 }
             }
         } catch (PackageManager.NameNotFoundException e) {

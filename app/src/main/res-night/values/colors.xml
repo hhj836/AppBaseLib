@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary_night">#000000</color>
+    <color name="colorPrimary_night">#f2f2f6</color>
 
     <color name="default_refresh_bg_night">#000000</color>
     <color name="global_color_night">#3F51B5</color>
     <color name="global_bg_night">#FF4081</color>
+    <color name="tv_night">#000000</color>
 </resources>

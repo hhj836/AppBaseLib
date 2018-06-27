@@ -1,5 +1,6 @@
 package com.hhj.appbase.base;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.AppBarLayout;
@@ -10,6 +11,7 @@ import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 
 import com.hhj.appbase.R;
+import com.hhj.appbase.utils.ToastUtils;
 import com.hhj.appbase.view.titlebar.widget.CommonTitleBar;
 
 
@@ -17,13 +19,21 @@ import com.hhj.appbase.view.titlebar.widget.CommonTitleBar;
  * Created by hhj on 2018/3/22.
  */
 
-public abstract  class BaseViewFragment<P extends Presenter> extends BeamFragment<P> {
+public abstract  class BaseViewFragment<P extends Presenter> extends BeamFragment<P> implements ViewInterface{
 
     private View root_base;
 
 
     public View getRoot() {
         return root_base;
+    }
+    public View emptyView;
+    public View noNetView;
+    public View getEmptyView(){
+        return null;
+    }
+    public View getNoNetView(){
+        return null;
     }
     FrameLayout fm_content_base;
     public CommonTitleBar commonTitleBar;
@@ -35,6 +45,60 @@ public abstract  class BaseViewFragment<P extends Presenter> extends BeamFragmen
 
     public abstract  int getLayoutId();
     public abstract void initView();
+
+    @Override
+    public Activity getActivityImp() {
+        return mActivity;
+    }
+
+    @Override
+    public void showMessage(String message) {
+        ToastUtils.showLongToast(mActivity,message);
+    }
+
+    @Override
+    public void showLoading() {
+        if(commonTitleBar!=null){
+            commonTitleBar.showCenterProgress();
+        }
+    }
+
+    @Override
+    public void hideEmptyView() {
+        if(emptyView!=null&&emptyView.getParent()!=null&&fm_content_base!=null){
+            fm_content_base.removeView(emptyView);
+        }
+    }
+
+    @Override
+    public void hideNoNetView() {
+        if(noNetView!=null&&noNetView.getParent()!=null&&fm_content_base!=null){
+            fm_content_base.removeView(noNetView);
+        }
+    }
+
+    @Override
+    public void hideLoading() {
+        if(commonTitleBar!=null){
+            commonTitleBar.dismissCenterProgress();
+        }
+
+    }
+
+    @Override
+    public void showEmptyView() {
+        if(fm_content_base!=null&&emptyView!=null){
+            fm_content_base.addView(emptyView);
+        }
+
+    }
+
+    @Override
+    public void showNoNetView() {
+        if(fm_content_base!=null&&noNetView!=null){
+            fm_content_base.addView(noNetView);
+        }
+    }
     /**
      * 是否滑动titlebar
      * @return
@@ -52,7 +116,7 @@ public abstract  class BaseViewFragment<P extends Presenter> extends BeamFragmen
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View  view=null;
+        View  view;
         if(getTitleResId()!=0){
             view=inflater.inflate(R.layout.ac_base_view,null);
             appBarLayout_base=view.findViewById(R.id.appbar_base);
@@ -68,12 +132,11 @@ public abstract  class BaseViewFragment<P extends Presenter> extends BeamFragmen
                 fm_content_base.addView(content);
             }
 
-
-
-
         }else {
             view=inflater.inflate(getLayoutId(),null);
         }
+        emptyView=getEmptyView();
+        noNetView=getNoNetView();
         root_base=view;
         onPreInitView();
         initView();

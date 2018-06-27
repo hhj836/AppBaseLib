@@ -20,7 +20,7 @@ import static com.trello.rxlifecycle2.internal.Preconditions.checkNotNull;
  */
 
 public abstract  class BaseListPresenter<T extends IListView,M> extends BasePresenter<T>implements OnRefreshListener,
-        OnLoadMoreListener,IListPresenter{
+        OnLoadMoreListener,IListPresenter<M>{
     public BaseQuickAdapter<M, BaseViewHolder> getAdapter() {
         return mAdapter;
     }
@@ -36,12 +36,16 @@ public abstract  class BaseListPresenter<T extends IListView,M> extends BasePres
     public Observer<List<M>> getLoadMoreObserver(){
         return  lodMoreObserver;
     }
+    public void onPageChange(){
+        page++;
 
-    public ListConfig getListConfig() {
+    }
+
+    public   ListConfig getListConfig() {
         return mListConfig;
     }
 
-    private ListConfig  mListConfig;
+    private ListConfig<M>  mListConfig;
 
     @Override
     protected void onCreate(@NonNull T view, Bundle savedState) {
@@ -49,7 +53,7 @@ public abstract  class BaseListPresenter<T extends IListView,M> extends BasePres
         mListConfig=createListConfig();
         checkNotNull(mListConfig,"ListConfig is null");
         mAdapter=createAdapter();
-        refreshObserver=new DataObserver<List<M>>(getActivity()) {
+        refreshObserver=mListConfig.refreshObserver==null?new DataObserver<List<M>>(getActivity()) {
             @Override
             public void onNext(@NonNull List<M> ms) {
                 getView().finishRefresh();
@@ -61,18 +65,18 @@ public abstract  class BaseListPresenter<T extends IListView,M> extends BasePres
                 }
 
             }
-        };
-        lodMoreObserver=new DataObserver<List<M>>(getActivity()) {
+        }:mListConfig.refreshObserver;
+        lodMoreObserver=mListConfig.lodMoreObserver==null?new DataObserver<List<M>>(getActivity()) {
             @Override
             public void onNext(@NonNull List<M> ms) {
                 getView().finishLoadMore(ms.size()==0);
                 if(ms.size()!=0){
-                    page++;
+                    onPageChange();
                     mAdapter.addData(ms);
                 }
 
             }
-        };
+        }:mListConfig.lodMoreObserver;
     }
 
     @Override

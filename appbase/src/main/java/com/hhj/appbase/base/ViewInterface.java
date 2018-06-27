@@ -7,10 +7,12 @@ import android.app.Activity;
  */
 
 public interface ViewInterface {
-    Activity getActivity();
+    Activity getActivityImp();
     void showLoading();
     void hideLoading();
-    void showEmpty();
-    void showNoNet();
+    void showEmptyView();
+    void hideEmptyView();
+    void showNoNetView();
+    void hideNoNetView();
     void showMessage(String message);
 }

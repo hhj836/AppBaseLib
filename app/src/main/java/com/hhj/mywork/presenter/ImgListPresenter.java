@@ -9,6 +9,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.chad.library.adapter.base.animation.BaseAnimation;
 import com.hhj.appbase.list.BaseListPresenter;
+import com.hhj.appbase.list.IListView;
 import com.hhj.appbase.list.ListConfig;
 import com.hhj.appbase.utils.ToastUtils;
 import com.hhj.mywork.R;
@@ -26,7 +27,7 @@ import io.reactivex.Observable;
  * Created by hhj on 2018/3/24.
  */
 
-public class ImgListPresenter extends BaseListPresenter<ImgListActivity,Picture> {
+public class ImgListPresenter extends BaseListPresenter<IListView,Picture> {
     @Override
     public BaseQuickAdapter<Picture, BaseViewHolder> createAdapter() {
         ImgListAdapter adapter=new ImgListAdapter(new ArrayList<Picture>());
@@ -43,8 +44,8 @@ public class ImgListPresenter extends BaseListPresenter<ImgListActivity,Picture>
     }
 
     @Override
-    public ListConfig createListConfig() {
-        return new ListConfig.Builder().setAnimation(new BaseAnimation() {
+    public ListConfig<Picture> createListConfig() {
+        return new ListConfig.Builder<Picture>().setAnimation(new BaseAnimation() {
             @Override
             public Animator[] getAnimators(View view) {
                 return new Animator[]{ObjectAnimator.ofFloat(view, "scaleY", 0, 1.0f).setDuration(500),

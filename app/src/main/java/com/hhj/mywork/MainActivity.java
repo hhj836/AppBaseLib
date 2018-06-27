@@ -1,6 +1,7 @@
 package com.hhj.mywork;
 
 import android.content.Intent;
+import android.os.Handler;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -10,11 +11,10 @@ import com.hhj.appbase.base.RequiresPresenter;
 import com.hhj.appbase.utils.RxBus;
 import com.hhj.mywork.activity.BaseActivity;
 import com.hhj.mywork.activity.ImgListActivity;
-import com.hhj.mywork.activity.TestActivity;
 import com.hhj.mywork.event.Event1;
 import com.hhj.mywork.presenter.MainPresenter;
+import com.hhj.mywork.viewinterface.IMainActivity;
 
-import junit.framework.Test;
 
 import butterknife.BindView;
 import io.reactivex.annotations.NonNull;
@@ -23,7 +23,7 @@ import skin.support.SkinCompatManager;
 import skin.support.utils.SkinPreference;
 
 @RequiresPresenter(MainPresenter.class)
-public class MainActivity extends BaseActivity<MainPresenter> {
+public class MainActivity extends BaseActivity<MainPresenter> implements IMainActivity {
     @Override
     protected boolean isSwipeBackEnable() {
         return false;
@@ -74,8 +74,9 @@ public class MainActivity extends BaseActivity<MainPresenter> {
 
             }
         });
-    }
 
+    }
+    @Override
     public void setText(String s){
        tv.setText(s);
     }

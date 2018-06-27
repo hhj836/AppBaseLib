@@ -6,6 +6,7 @@ import android.os.Build;
 import android.support.v4.view.ViewCompat;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.widget.TextView;
 
 import com.hhj.appbase.R;
 
@@ -23,8 +24,12 @@ public class SkinCompatCommonTitleHelper extends SkinCompatHelper {
     private int centerSubTextColor=INVALID_ID;
     private int titleBarColor=INVALID_ID;
     private int leftTextColor=INVALID_ID;
-
+    private int leftDrawable=INVALID_ID;
+    private int leftImageResource=INVALID_ID;
+    private int rightImageResource=INVALID_ID;
     private int rightTextColor=INVALID_ID;
+
+    private int rippleRes=INVALID_ID;
 
    // private int centerSearchBgResource=INVALID_ID;
 
@@ -40,6 +45,10 @@ public class SkinCompatCommonTitleHelper extends SkinCompatHelper {
             centerSubTextColor=a.getResourceId(R.styleable.CommonTitleBar_centerSubTextColor, INVALID_ID);
             leftTextColor=a.getResourceId(R.styleable.CommonTitleBar_leftTextColor, INVALID_ID);
             rightTextColor=a.getResourceId(R.styleable.CommonTitleBar_rightTextColor, INVALID_ID);
+            leftDrawable=a.getResourceId(R.styleable.CommonTitleBar_leftDrawable, INVALID_ID);
+            leftImageResource=a.getResourceId(R.styleable.CommonTitleBar_leftImageResource, INVALID_ID);
+            rightImageResource=a.getResourceId(R.styleable.CommonTitleBar_rightImageResource, INVALID_ID);
+            rippleRes=a.getResourceId(R.styleable.CommonTitleBar_rippleBgRes, INVALID_ID);
             //centerSearchBgResource=a.getResourceId(R.styleable.CommonTitleBar_centerSearchBg, INVALID_ID);
         } finally {
             if (a != null) {
@@ -74,6 +83,40 @@ public class SkinCompatCommonTitleHelper extends SkinCompatHelper {
             if(rightTextColor!=INVALID_ID){
                 mView.getRightTextView().setTextColor(SkinCompatResources.getColorStateList(mView.getContext(), rightTextColor));
             }
+            leftDrawable=checkResourceId(leftDrawable);
+            if(leftDrawable!=INVALID_ID){
+                TextView tvLeft=  mView.getLeftTextView();
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+                    tvLeft.setCompoundDrawablesRelativeWithIntrinsicBounds(SkinCompatResources.getDrawable(mView.getContext(),leftDrawable), null, null, null);
+                } else {
+                    tvLeft.setCompoundDrawablesWithIntrinsicBounds(SkinCompatResources.getDrawable(mView.getContext(),leftDrawable), null, null, null);
+                }
+
+                }
+            leftImageResource=checkResourceId(leftImageResource);
+            if(leftImageResource!=INVALID_ID){
+                mView.getLeftImageButton().setImageDrawable(SkinCompatResources.getDrawable(mView.getContext(),leftImageResource));
+            }
+            rightImageResource=checkResourceId(rightImageResource);
+            if(rightImageResource!=INVALID_ID){
+                mView.getRightImageButton().setImageDrawable(SkinCompatResources.getDrawable(mView.getContext(),rightImageResource));
+            }
+            rippleRes=checkResourceId(rippleRes);
+            if(rippleRes!=INVALID_ID){
+                if(mView.getLeftTextView()!=null){
+                    mView.getLeftTextView().setBackground(SkinCompatResources.getDrawable(mView.getContext(),rippleRes));
+                }
+                if(mView.getLeftImageButton()!=null){
+                    mView.getLeftImageButton().setBackground(SkinCompatResources.getDrawable(mView.getContext(),rippleRes));
+                }
+                if(mView.getRightTextView()!=null){
+                    mView.getRightTextView().setBackground(SkinCompatResources.getDrawable(mView.getContext(),rippleRes));
+                }
+                if(mView.getRightImageButton()!=null){
+                    mView.getRightImageButton().setBackground(SkinCompatResources.getDrawable(mView.getContext(),rippleRes));
+                }
+            }
+
         } catch (Exception e) {
         }
 

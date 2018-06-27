@@ -27,10 +27,6 @@ public abstract class BaseListFragment<P extends BaseListPresenter> extends Base
     public RecyclerView recyclerView;
     private ListConfig mListConfig;
 
-    @Override
-    public Activity getMActivity() {
-        return mActivity;
-    }
 
     @Override
     public int getLayoutId() {

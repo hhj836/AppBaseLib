@@ -27,10 +27,6 @@ public abstract class BaseListActivity<P extends BaseListPresenter> extends Base
     public RecyclerView recyclerView;
     private ListConfig mListConfig;
 
-    @Override
-    public Activity getMActivity() {
-        return BaseListActivity.this;
-    }
 
     @Override
     public RecyclerView.LayoutManager createLayoutManger(){
@@ -110,6 +106,7 @@ public abstract class BaseListActivity<P extends BaseListPresenter> extends Base
         }
 
     }
+
     @Override
     public void showEmptyView(){
         if( getPresenter().getAdapter().getEmptyViewCount()==0){
