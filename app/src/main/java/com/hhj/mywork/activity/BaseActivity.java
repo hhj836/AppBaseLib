@@ -19,19 +19,7 @@ public abstract  class BaseActivity<P extends Presenter> extends BaseViewActivit
     public int getTitleResId() {
         return R.layout.title_common;
     }
-    public CommonTitleBar.OnTitleBarListener getTitleBarListener(){
-        return new CommonTitleBar.OnTitleBarListener() {
-            @Override
-            public void onClicked(View v, int action, String extra) {
-                switch (action){
-                    case CommonTitleBar.ACTION_LEFT_TEXT:
-                    case CommonTitleBar.ACTION_LEFT_BUTTON:
-                        finish();
-                        break;
-                }
-            }
-        };
-    }
+
     @Override
     public void onPreInitView() {
         ButterKnife.bind(this);

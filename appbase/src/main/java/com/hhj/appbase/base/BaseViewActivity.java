@@ -39,6 +39,19 @@ public abstract class BaseViewActivity<P extends Presenter> extends BeamAppCompa
     protected boolean isSwipeBackEnable() {
         return true;
     }
+    public CommonTitleBar.OnTitleBarListener getTitleBarListener(){
+        return new CommonTitleBar.OnTitleBarListener() {
+            @Override
+            public void onClicked(View v, int action, String extra) {
+                switch (action){
+                    case CommonTitleBar.ACTION_LEFT_TEXT:
+                    case CommonTitleBar.ACTION_LEFT_BUTTON:
+                        finish();
+                        break;
+                }
+            }
+        };
+    }
 
     @Override
     public Activity getActivityImp() {

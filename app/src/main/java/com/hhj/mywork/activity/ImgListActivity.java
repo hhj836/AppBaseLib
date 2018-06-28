@@ -61,27 +61,9 @@ public class ImgListActivity extends BaseListActivity<ImgListPresenter> implemen
         return itemDecoration;
     }
 
-    boolean isChange;
     @Override
     public void initView() {
        // setTitleText("图片列表");
-        isChange=!TextUtils.isEmpty(SkinPreference.getInstance().getSkinName());
-
-        commonTitleBar.setListener(new CommonTitleBar.OnTitleBarListener() {
-            @Override
-            public void onClicked(View v, int action, String extra) {
-                switch (action){
-                    case CommonTitleBar.ACTION_LEFT_TEXT:
-                        if(isChange){
-                            SkinCompatManager.getInstance().restoreDefaultTheme();
-                        }else {
-                            SkinCompatManager.getInstance().loadSkin("night", SkinCompatManager.SKIN_LOADER_STRATEGY_BUILD_IN);
-                        }
-                        isChange=!isChange;
-                        break;
-                }
-            }
-        });
         commonTitleBar.setDoubleClickListener(new CommonTitleBar.OnTitleBarDoubleClickListener() {
             @Override
             public void onClicked(View v) {

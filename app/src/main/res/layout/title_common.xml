@@ -15,5 +15,6 @@
     titlebar:leftDrawablePadding="10dp"
     titlebar:leftTextColor="@color/tv"
     titlebar:leftText="返回"
+    titlebar:leftType="textView"
     titlebar:titleBarColor="@color/colorPrimary"
     titlebar:centerTextColor="@color/tv" />

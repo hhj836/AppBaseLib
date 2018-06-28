@@ -8,5 +8,6 @@
     <color name="default_refresh_bg">#555</color>
     <color name="global_color">#1e233a</color>
     <color name="global_bg">#f2f2f6</color>
+    <color name="global_bg2">#f2f2f6</color>
     <color name="tv">#f2f2f6</color>
 </resources>

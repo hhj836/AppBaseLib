@@ -45,7 +45,19 @@ public abstract  class BaseViewFragment<P extends Presenter> extends BeamFragmen
 
     public abstract  int getLayoutId();
     public abstract void initView();
-
+    public CommonTitleBar.OnTitleBarListener getTitleBarListener(){
+        return new CommonTitleBar.OnTitleBarListener() {
+            @Override
+            public void onClicked(View v, int action, String extra) {
+                switch (action){
+                    case CommonTitleBar.ACTION_LEFT_TEXT:
+                    case CommonTitleBar.ACTION_LEFT_BUTTON:
+                        mActivity.finish();
+                        break;
+                }
+            }
+        };
+    }
     @Override
     public Activity getActivityImp() {
         return mActivity;

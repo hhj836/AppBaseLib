@@ -49,7 +49,7 @@ public class MySmartRefreshLayout extends SmartRefreshLayout implements SkinComp
     public void applySkin() {
         if(accentColor!=INVALID_ID&&primaryColor!=INVALID_ID){
             String skin = SkinPreference.getInstance().getSkinName();
-            setPrimaryColors(getResources().getColor(TextUtils.isEmpty(skin)?R.color.colorPrimary: R.color.colorPrimary_night),getResources().getColor(TextUtils.isEmpty(skin)?R.color.global_bg:R.color.global_bg_night));
+            setPrimaryColors(getResources().getColor(TextUtils.isEmpty(skin)?R.color.colorPrimary: R.color.colorPrimary_night),getResources().getColor(TextUtils.isEmpty(skin)?R.color.global_bg:R.color.tv_night));
         }
 
 
