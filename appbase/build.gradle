@@ -23,13 +23,14 @@ android {
 }
 repositories {
     maven { url "https://maven.google.com"}
+    maven { url "https://jitpack.io" }
     allprojects {
         mavenCentral()
         jcenter()
         maven {
             url "http://mvn.gt.igexin.com/nexus/content/repositories/releases/"
         }
-        maven { url "https://jitpack.io" }
+
 
 
     }
