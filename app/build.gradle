@@ -30,13 +30,14 @@ buildscript {
 
 }
 repositories {
+    maven { url "https://maven.google.com"}
     allprojects {
         jcenter()
         maven {
             url "http://mvn.gt.igexin.com/nexus/content/repositories/releases/"
         }
         maven { url "https://jitpack.io" }
-        maven { url "https://maven.google.com"}
+
 
     }
 }
