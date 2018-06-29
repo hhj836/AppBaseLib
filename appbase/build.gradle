@@ -21,20 +21,19 @@ android {
         }
     }
 }
-repositories {
-    maven { url "https://maven.google.com"}
-    maven { url "https://jitpack.io" }
-    allprojects {
+allprojects {
+    repositories {
         mavenCentral()
         jcenter()
         maven {
             url "http://mvn.gt.igexin.com/nexus/content/repositories/releases/"
         }
-
-
+        maven { url "https://maven.google.com"}
+        maven { url "https://jitpack.io" }
 
     }
 }
+
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
