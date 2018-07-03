@@ -5,7 +5,6 @@ import android.support.v7.widget.StaggeredGridLayoutManager;
 
 import com.hhj.mywork.R;
 import com.hhj.mywork.fragment.ImgListFragment;
-import com.jude.easyrecyclerview.decoration.SpaceDecoration;
 
 /**
  * Created by hhj on 2018/4/10.

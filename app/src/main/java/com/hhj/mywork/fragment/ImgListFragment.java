@@ -8,7 +8,7 @@ import android.util.DisplayMetrics;
 import com.hhj.appbase.base.RequiresPresenter;
 import com.hhj.appbase.list.BaseListFragment;
 import com.hhj.mywork.presenter.ImgListPresenter;
-import com.jude.easyrecyclerview.decoration.SpaceDecoration;
+import com.hhj.mywork.view.SpaceDecoration;
 
 /**
  * Created by hhj on 2018/4/10.

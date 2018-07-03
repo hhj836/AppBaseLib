@@ -18,17 +18,8 @@ import com.hhj.appbase.list.ListConfig;
 import com.hhj.appbase.view.titlebar.widget.CommonTitleBar;
 import com.hhj.mywork.R;
 import com.hhj.mywork.presenter.ImgListPresenter;
-import com.hhj.mywork.utlis.Picture;
-import com.jude.easyrecyclerview.decoration.SpaceDecoration;
+import com.hhj.mywork.view.SpaceDecoration;
 
-import java.util.List;
-
-import io.reactivex.Observable;
-import io.reactivex.ObservableEmitter;
-import io.reactivex.ObservableOnSubscribe;
-import io.reactivex.annotations.NonNull;
-import skin.support.SkinCompatManager;
-import skin.support.utils.SkinPreference;
 import skin.support.widget.SkinCompatSupportable;
 
 
@@ -54,7 +45,7 @@ public class ImgListActivity extends BaseListActivity<ImgListPresenter> implemen
 
     @Override
     public RecyclerView.ItemDecoration createItemDecoration() {
-        SpaceDecoration itemDecoration = new SpaceDecoration((int) convertDpToPixel(8,this));
+        SpaceDecoration itemDecoration = new SpaceDecoration((int) convertDpToPixel(4,this));
         itemDecoration.setPaddingEdgeSide(true);
         itemDecoration.setPaddingStart(true);
         itemDecoration.setPaddingHeaderFooter(false);

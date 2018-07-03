@@ -20,6 +20,10 @@
         <activity android:name=".activity.ImgListActivity"></activity>
         <activity android:name=".activity.TestFragmentActivity"></activity>
         <activity android:name=".activity.TestActivity"></activity>
-</application>
+
+        <meta-data android:name="MODEL" android:value="com.hhj.mywork.model.TestModel,com.hhj.mywork.model.TestModel2" />
+        <meta-data android:name="com.hhj.mywork.glide.MyGlideModule" android:value="GlideModule" />
+
+    </application>
 
 </manifest>

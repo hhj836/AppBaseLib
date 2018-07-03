@@ -52,6 +52,7 @@ public class ModelManager {
     }
 
     private static <T extends AbsModel> T createModel(Class<T> clazz){
+
         if (clazz!=null && AbsModel.class.isAssignableFrom(clazz)){
             try {
                 AbsModel instance =  clazz.newInstance();
