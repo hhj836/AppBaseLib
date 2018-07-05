@@ -7,6 +7,8 @@ import android.os.Parcelable;
 
 import com.hhj.appbase.list.IListView;
 
+import java.io.Serializable;
+
 import static com.trello.rxlifecycle2.internal.Preconditions.checkNotNull;
 
 /**
@@ -30,10 +32,12 @@ public abstract class BasePresenter<ViewType> extends Presenter<ViewType> {
         checkNotNull(activity,"activity is null--->"+getView().getClass().getSimpleName());
         return  activity;
     }
-    public String getIdFromIntent(){
+    public String getStringFromIntent(){
         return getActivity().getIntent().getStringExtra(KEY_ID);
     }
-
+    public int getIntFromIntent(){
+        return getActivity().getIntent().getIntExtra(KEY_ID,0);
+    }
     public <M> M getDataFromIntent(){
         return getActivity().getIntent().getParcelableExtra(KEY_DATA);
     }
@@ -61,6 +65,12 @@ public abstract class BasePresenter<ViewType> extends Presenter<ViewType> {
         activity.startActivity(i);
     }
     public void startActivityWithData(Parcelable data,Class<? extends Activity> clazz){
+        Activity activity = getActivity();
+        Intent i = new Intent(activity,clazz);
+        i.putExtra(KEY_DATA,data);
+        activity.startActivity(i);
+    }
+    public void startActivityWithSerializableData(Serializable data, Class<? extends Activity> clazz){
         Activity activity = getActivity();
         Intent i = new Intent(activity,clazz);
         i.putExtra(KEY_DATA,data);
