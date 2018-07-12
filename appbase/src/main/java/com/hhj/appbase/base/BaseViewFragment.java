@@ -13,6 +13,7 @@ import android.widget.RelativeLayout;
 import com.hhj.appbase.R;
 import com.hhj.appbase.utils.ToastUtils;
 import com.hhj.appbase.view.titlebar.widget.CommonTitleBar;
+import com.trello.rxlifecycle2.LifecycleTransformer;
 
 
 /**
@@ -110,6 +111,10 @@ public abstract  class BaseViewFragment<P extends Presenter> extends BeamFragmen
         if(fm_content_base!=null&&noNetView!=null){
             fm_content_base.addView(noNetView);
         }
+    }
+    @Override
+    public <T> LifecycleTransformer<T> getLifecycleTransFormer() {
+        return this.<T>bindToLifecycle();
     }
     /**
      * 是否滑动titlebar

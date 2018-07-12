@@ -12,6 +12,7 @@ import com.hhj.appbase.R;
 import com.hhj.appbase.utils.ToastUtils;
 import com.hhj.appbase.view.titlebar.widget.CommonTitleBar;
 import com.jude.swipbackhelper.SwipeBackHelper;
+import com.trello.rxlifecycle2.LifecycleTransformer;
 
 
 /**
@@ -105,6 +106,11 @@ public abstract class BaseViewActivity<P extends Presenter> extends BeamAppCompa
         if(fm_content_base!=null&&noNetView!=null){
             fm_content_base.addView(noNetView);
         }
+    }
+
+    @Override
+    public <T> LifecycleTransformer<T> getLifecycleTransFormer() {
+        return this.<T>bindToLifecycle();
     }
 
     /**
