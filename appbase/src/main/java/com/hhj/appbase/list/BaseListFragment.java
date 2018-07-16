@@ -70,7 +70,7 @@ public abstract class BaseListFragment<P extends BaseListPresenter> extends Base
             internalClassics.setFinishDuration(0);
         }
         if(mListConfig.srlPrimaryColor!=0||mListConfig.srlAccentColor!=0){
-            refreshLayout.getRefreshHeader().setPrimaryColors(mListConfig.srlPrimaryColor==0?getResources().getColor(R.color.default_refresh_bg):
+            refreshLayout.getRefreshHeader().setPrimaryColors(mListConfig.srlPrimaryColor==0?getResources().getColor(R.color.base_default_refresh_bg):
                     mListConfig.srlPrimaryColor,mListConfig.srlAccentColor==0? Color.WHITE:mListConfig.srlAccentColor);
         }
         if(createLayoutManger()!=null){
