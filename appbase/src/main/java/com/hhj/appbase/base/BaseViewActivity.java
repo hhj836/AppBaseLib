@@ -59,8 +59,8 @@ public abstract class BaseViewActivity<P extends Presenter> extends BeamAppCompa
         return BaseViewActivity.this;
     }
     @Override
-    public void showMessage(String message) {
-        ToastUtils.showLongToast(BaseViewActivity.this,message);
+    public void showToast(String msg) {
+        ToastUtils.showLongToast(BaseViewActivity.this,msg);
     }
 
     @Override

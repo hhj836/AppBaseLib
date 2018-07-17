@@ -65,8 +65,8 @@ public abstract  class BaseViewFragment<P extends Presenter> extends BeamFragmen
     }
 
     @Override
-    public void showMessage(String message) {
-        ToastUtils.showLongToast(mActivity,message);
+    public void showToast(String msg) {
+        ToastUtils.showLongToast(mActivity,msg);
     }
 
     @Override
