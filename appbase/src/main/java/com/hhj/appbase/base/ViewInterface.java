@@ -17,5 +17,5 @@ public interface ViewInterface {
     void hideEmptyView();
     void showNoNetView();
     void hideNoNetView();
-    void showMessage(String message);
+    void showToast(String message);
 }
