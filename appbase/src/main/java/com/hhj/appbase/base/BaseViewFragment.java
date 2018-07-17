@@ -160,28 +160,14 @@ public abstract  class BaseViewFragment<P extends Presenter> extends BeamFragmen
             view=inflater.inflate(getLayoutId(),null);
         }
         emptyView=getEmptyView();
-        noNetView=getNoNetView();
-        if(emptyView!=null){
-            emptyView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    refreshData();
-                }
-            });
-        }
-        if(noNetView!=null){
-            noNetView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    refreshData();
-                }
-            });
-        }
+        setNoNetView(getNoNetView());
         root_base=view;
         onPreInitView();
         initView();
         return  view;
     }
-
+    protected void setNoNetView(View v){
+        noNetView=v;
+    }
 
 }

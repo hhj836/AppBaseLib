@@ -77,11 +77,6 @@ public class ImgListActivity extends BaseListActivity<ImgListPresenter> implemen
 
     }
 
-    @Override
-    public void refreshData() {
-        super.refreshData();
-        refreshLayout.autoRefresh();
-    }
 
     public static float convertDpToPixel(float dp, Context context){
         Resources resources = context.getResources();

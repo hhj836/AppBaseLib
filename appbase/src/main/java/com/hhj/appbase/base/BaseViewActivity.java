@@ -29,6 +29,7 @@ public abstract class BaseViewActivity<P extends Presenter> extends BeamAppCompa
     public   void onPreInitView(){};
     public abstract  int getLayoutId();
     public abstract  void initView();
+    //点击事件自行实现
     public View emptyView;
     public View noNetView;
     public View getEmptyView(){
@@ -169,28 +170,14 @@ public abstract class BaseViewActivity<P extends Presenter> extends BeamAppCompa
 
         }
         emptyView=getEmptyView();
-        noNetView=getNoNetView();
-        if(emptyView!=null){
-            emptyView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    refreshData();
-                }
-            });
-        }
-        if(noNetView!=null){
-            noNetView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    refreshData();
-                }
-            });
-        }
+        setNoNetView(getNoNetView());
         onPreInitView();
         initView();
 
     }
-
+    protected void setNoNetView(View v){
+        noNetView=v;
+    }
     @Override
     public void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);

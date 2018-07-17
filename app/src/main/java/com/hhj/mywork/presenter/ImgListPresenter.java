@@ -45,7 +45,14 @@ public class ImgListPresenter extends BaseListPresenter<IListView,Picture> {
 
     @Override
     public ListConfig<Picture> createListConfig() {
-        return new ListConfig.Builder<Picture>().setNoNetView(View.inflate(getView().getActivityImp(),R.layout.test_empty,null)).setAnimation(new BaseAnimation() {
+        View noNetView=View.inflate(getView().getActivityImp(),R.layout.test_empty,null);
+        noNetView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getView().refreshData();
+            }
+        });
+        return new ListConfig.Builder<Picture>().setNoNetView(noNetView).setAnimType( BaseQuickAdapter.SCALEIN)/*.setAnimation(new BaseAnimation() {
             @Override
             public Animator[] getAnimators(View view) {
                 return new Animator[]{ObjectAnimator.ofFloat(view, "scaleY", 0, 1.0f).setDuration(500),
@@ -54,7 +61,7 @@ public class ImgListPresenter extends BaseListPresenter<IListView,Picture> {
 
                  };
             }
-        }).setContentResId(R.layout.common_list).build();
+        })*/.setContentResId(R.layout.common_list).build();
     }
 
     @Override

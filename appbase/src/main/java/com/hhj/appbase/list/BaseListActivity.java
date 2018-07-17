@@ -77,15 +77,7 @@ public abstract class BaseListActivity<P extends BaseListPresenter> extends Base
             recyclerView.addItemDecoration(createItemDecoration());
         }
         if(mListConfig.noNetView!=null){
-            noNetView=mListConfig.noNetView;
-            if(noNetView!=null){
-                noNetView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        refreshData();
-                    }
-                });
-            }
+            setNoNetView(mListConfig.noNetView);
         }
         if(mListConfig.animationType!=0){
             getPresenter().getAdapter().openLoadAnimation(mListConfig.animationType);
@@ -117,6 +109,12 @@ public abstract class BaseListActivity<P extends BaseListPresenter> extends Base
             refreshLayout.finishLoadMore();
         }
 
+    }
+
+    @Override
+    public void refreshData() {
+        super.refreshData();
+        refreshLayout.autoRefresh();
     }
 
     @Override
