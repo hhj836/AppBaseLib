@@ -1,6 +1,8 @@
 package com.hhj.appbase.list;
 
 
+import android.view.View;
+
 import com.chad.library.adapter.base.animation.BaseAnimation;
 
 import java.util.List;
@@ -25,6 +27,7 @@ public class ListConfig<M>  {
     public int mContainerEmptyResId;
     //动画类型
     public int  animationType;
+    public View noNetView;
     public BaseAnimation baseAnimation;
     public Observer<List<M>>  refreshObserver;
     public Observer<List<M>>  lodMoreObserver;
@@ -70,6 +73,10 @@ public class ListConfig<M>  {
             target.animationType=animationType;
             return  Builder.this;
 
+        }
+        public Builder<M> setNoNetView(View v){
+            target.noNetView=v;
+            return  Builder.this;
         }
         public Builder<M> setAnimation(BaseAnimation baseAnimation){
             target.baseAnimation=baseAnimation;

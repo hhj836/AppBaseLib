@@ -5,7 +5,6 @@ import android.view.View;
 
 import com.hhj.appbase.base.BaseViewActivity;
 import com.hhj.appbase.base.Presenter;
-import com.hhj.appbase.view.titlebar.widget.CommonTitleBar;
 import com.hhj.mywork.R;
 
 import butterknife.ButterKnife;
@@ -15,6 +14,11 @@ import butterknife.ButterKnife;
  */
 
 public abstract  class BaseActivity<P extends Presenter> extends BaseViewActivity<P> {
+    @Override
+    public View getNoNetView() {
+        return View.inflate(BaseActivity.this,R.layout.test_empty,null);
+    }
+
     @Override
     public int getTitleResId() {
         return R.layout.title_common;

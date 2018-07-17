@@ -76,9 +76,21 @@ public abstract class BaseListActivity<P extends BaseListPresenter> extends Base
         if(createItemDecoration()!=null){
             recyclerView.addItemDecoration(createItemDecoration());
         }
+        if(mListConfig.noNetView!=null){
+            noNetView=mListConfig.noNetView;
+            if(noNetView!=null){
+                noNetView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        refreshData();
+                    }
+                });
+            }
+        }
         if(mListConfig.animationType!=0){
             getPresenter().getAdapter().openLoadAnimation(mListConfig.animationType);
         }
+
         if(mListConfig.baseAnimation!=null){
             getPresenter().getAdapter().openLoadAnimation(mListConfig.baseAnimation);
         }

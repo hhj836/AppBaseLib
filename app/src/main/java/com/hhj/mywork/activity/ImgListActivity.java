@@ -17,9 +17,16 @@ import com.hhj.appbase.list.BaseListActivity;
 import com.hhj.appbase.list.ListConfig;
 import com.hhj.appbase.view.titlebar.widget.CommonTitleBar;
 import com.hhj.mywork.R;
+import com.hhj.mywork.app.App;
 import com.hhj.mywork.presenter.ImgListPresenter;
 import com.hhj.mywork.view.SpaceDecoration;
 
+import java.util.concurrent.TimeUnit;
+
+import io.reactivex.Observable;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.functions.Consumer;
+import io.reactivex.schedulers.Schedulers;
 import skin.support.widget.SkinCompatSupportable;
 
 
@@ -61,8 +68,21 @@ public class ImgListActivity extends BaseListActivity<ImgListPresenter> implemen
                 recyclerView.smoothScrollToPosition(0);
             }
         });
+        Observable.timer(2,TimeUnit.SECONDS).observeOn(AndroidSchedulers.mainThread()).subscribe(new Consumer<Long>() {
+            @Override
+            public void accept(Long aLong) throws Exception {
+                showNoNetView();
+            }
+        });
 
     }
+
+    @Override
+    public void refreshData() {
+        super.refreshData();
+        refreshLayout.autoRefresh();
+    }
+
     public static float convertDpToPixel(float dp, Context context){
         Resources resources = context.getResources();
         DisplayMetrics metrics = resources.getDisplayMetrics();

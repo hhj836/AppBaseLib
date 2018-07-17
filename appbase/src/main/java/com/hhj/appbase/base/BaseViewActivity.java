@@ -55,6 +55,13 @@ public abstract class BaseViewActivity<P extends Presenter> extends BeamAppCompa
     }
 
     @Override
+    public void refreshData() {
+        hideEmptyView();
+        hideNoNetView();
+
+    }
+
+    @Override
     public Activity getActivityImp() {
         return BaseViewActivity.this;
     }
@@ -163,6 +170,22 @@ public abstract class BaseViewActivity<P extends Presenter> extends BeamAppCompa
         }
         emptyView=getEmptyView();
         noNetView=getNoNetView();
+        if(emptyView!=null){
+            emptyView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    refreshData();
+                }
+            });
+        }
+        if(noNetView!=null){
+            noNetView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    refreshData();
+                }
+            });
+        }
         onPreInitView();
         initView();
 

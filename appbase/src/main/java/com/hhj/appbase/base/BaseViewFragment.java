@@ -116,6 +116,13 @@ public abstract  class BaseViewFragment<P extends Presenter> extends BeamFragmen
     public <T> LifecycleTransformer<T> getLifecycleTransFormer() {
         return this.<T>bindToLifecycle();
     }
+    @Override
+    public void refreshData() {
+        hideEmptyView();
+        hideNoNetView();
+
+    }
+
     /**
      * 是否滑动titlebar
      * @return
@@ -154,6 +161,22 @@ public abstract  class BaseViewFragment<P extends Presenter> extends BeamFragmen
         }
         emptyView=getEmptyView();
         noNetView=getNoNetView();
+        if(emptyView!=null){
+            emptyView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    refreshData();
+                }
+            });
+        }
+        if(noNetView!=null){
+            noNetView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    refreshData();
+                }
+            });
+        }
         root_base=view;
         onPreInitView();
         initView();

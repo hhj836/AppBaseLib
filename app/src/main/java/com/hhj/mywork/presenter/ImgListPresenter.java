@@ -45,7 +45,7 @@ public class ImgListPresenter extends BaseListPresenter<IListView,Picture> {
 
     @Override
     public ListConfig<Picture> createListConfig() {
-        return new ListConfig.Builder<Picture>().setAnimation(new BaseAnimation() {
+        return new ListConfig.Builder<Picture>().setNoNetView(View.inflate(getView().getActivityImp(),R.layout.test_empty,null)).setAnimation(new BaseAnimation() {
             @Override
             public Animator[] getAnimators(View view) {
                 return new Animator[]{ObjectAnimator.ofFloat(view, "scaleY", 0, 1.0f).setDuration(500),
