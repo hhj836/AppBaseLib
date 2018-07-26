@@ -36,7 +36,7 @@ public abstract  class BaseListPresenter<T extends IListView,M> extends BasePres
     public Observer<List<M>> getLoadMoreObserver(){
         return  lodMoreObserver;
     }
-    public void onPageChange(){
+    public void onPageChange(int dataSize){
         page++;
 
     }
@@ -71,8 +71,8 @@ public abstract  class BaseListPresenter<T extends IListView,M> extends BasePres
             public void onNext(@NonNull List<M> ms) {
                 getView().finishLoadMore(ms.size()==0);
                 if(ms.size()!=0){
-                    onPageChange();
                     mAdapter.addData(ms);
+                    onPageChange(ms.size());
                 }
 
             }
