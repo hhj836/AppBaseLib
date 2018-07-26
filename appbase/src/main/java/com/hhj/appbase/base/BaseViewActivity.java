@@ -19,7 +19,7 @@ import com.trello.rxlifecycle2.LifecycleTransformer;
  * Created by hhj on 2018/3/22.
  */
 
-public abstract class BaseViewActivity<P extends Presenter> extends BeamAppCompatActivity<P> {
+public abstract class BaseViewActivity<P extends Presenter> extends BeamAppCompatActivity<P> implements ViewInterface{
     FrameLayout fm_content_base;
     public CommonTitleBar commonTitleBar;
     AppBarLayout appBarLayout_base;
