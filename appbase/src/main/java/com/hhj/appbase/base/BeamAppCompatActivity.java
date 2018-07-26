@@ -18,7 +18,7 @@ import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
  * create your own view implementation.
  *
  */
-public abstract class BeamAppCompatActivity<PresenterType extends Presenter> extends RxAppCompatActivity {
+public abstract class BeamAppCompatActivity<PresenterType extends Presenter> extends RxAppCompatActivity implements ViewInterface{
     private ActivityLifeCycleDelegate activityLifeCycleDelegate;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

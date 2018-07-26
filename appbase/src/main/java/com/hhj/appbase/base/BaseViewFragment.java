@@ -20,7 +20,7 @@ import com.trello.rxlifecycle2.LifecycleTransformer;
  * Created by hhj on 2018/3/22.
  */
 
-public abstract  class BaseViewFragment<P extends Presenter> extends BeamFragment<P> implements ViewInterface{
+public abstract  class BaseViewFragment<P extends Presenter> extends BeamFragment<P>{
 
     private View root_base;
 

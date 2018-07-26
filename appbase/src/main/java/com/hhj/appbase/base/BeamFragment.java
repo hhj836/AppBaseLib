@@ -17,7 +17,7 @@ import com.trello.rxlifecycle2.components.support.RxFragment;
  * create your own view implementation.
  *
  */
-public class BeamFragment<PresenterType extends Presenter> extends RxFragment {
+public abstract  class BeamFragment<PresenterType extends Presenter> extends RxFragment implements ViewInterface{
     public BeamAppCompatActivity mActivity;
     private FragmentLifeCycleDelegate fragmentLifeCycleDelegate;
     @Override
