@@ -20,10 +20,6 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by xmuSistone on 2017/5/12.
- */
-
 public class PileLayout2 extends ViewGroup {
     private final  int VIEW_COUNT=6;//比显示多2个。防止绘制不过来
     private final int mMaximumVelocity;
