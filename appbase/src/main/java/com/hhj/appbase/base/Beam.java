@@ -35,8 +35,6 @@ public final class Beam {
         ModelManager.init(ctx);
     }
     public static  void destroy(){
-        mActivityLIfeCycleDelegateProvider=null;
-        mFragmentLIfeCycleDelegateProvider=null;
         ModelManager.destroy();
     }
 
