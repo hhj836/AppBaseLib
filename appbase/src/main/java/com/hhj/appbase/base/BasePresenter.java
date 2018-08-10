@@ -38,10 +38,12 @@ public abstract class BasePresenter<ViewType> extends Presenter<ViewType> {
     public int getIntFromIntent(){
         return getActivity().getIntent().getIntExtra(KEY_ID,0);
     }
-    public <M> M getDataFromIntent(){
+    public <M> M getParcelableDataFromIntent(){
         return getActivity().getIntent().getParcelableExtra(KEY_DATA);
     }
-
+    public <M> M getSerializableDataFromIntent(){
+        return (M) getActivity().getIntent().getSerializableExtra(KEY_DATA);
+    }
     public void startActivity(Intent intent){
         getActivity().startActivity(intent);
     }
