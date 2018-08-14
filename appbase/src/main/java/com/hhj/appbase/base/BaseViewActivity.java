@@ -13,6 +13,7 @@ import com.hhj.appbase.utils.ToastUtils;
 import com.hhj.appbase.view.titlebar.widget.CommonTitleBar;
 import com.jude.swipbackhelper.SwipeBackHelper;
 import com.trello.rxlifecycle2.LifecycleTransformer;
+import com.trello.rxlifecycle2.android.ActivityEvent;
 
 
 /**
@@ -118,9 +119,8 @@ public abstract class BaseViewActivity<P extends Presenter> extends BeamAppCompa
 
     @Override
     public <T> LifecycleTransformer<T> getLifecycleTransFormer() {
-        return this.<T>bindToLifecycle();
+        return this.<T>bindUntilEvent(ActivityEvent.DESTROY);
     }
-
     /**
      * 是否滑动titlebar
      * @return

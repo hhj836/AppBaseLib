@@ -3,6 +3,7 @@ package com.hhj.appbase.base;
 import android.app.Activity;
 
 import com.trello.rxlifecycle2.LifecycleTransformer;
+import com.trello.rxlifecycle2.android.ActivityEvent;
 
 /**
  * Created by hhj on 2018/6/15.

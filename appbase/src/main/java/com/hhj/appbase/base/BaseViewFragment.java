@@ -14,6 +14,8 @@ import com.hhj.appbase.R;
 import com.hhj.appbase.utils.ToastUtils;
 import com.hhj.appbase.view.titlebar.widget.CommonTitleBar;
 import com.trello.rxlifecycle2.LifecycleTransformer;
+import com.trello.rxlifecycle2.android.ActivityEvent;
+import com.trello.rxlifecycle2.android.FragmentEvent;
 
 
 /**
@@ -114,7 +116,7 @@ public abstract  class BaseViewFragment<P extends Presenter> extends BeamFragmen
     }
     @Override
     public <T> LifecycleTransformer<T> getLifecycleTransFormer() {
-        return this.<T>bindToLifecycle();
+        return this.<T>bindUntilEvent(FragmentEvent.DESTROY);
     }
     @Override
     public void refreshData() {
