@@ -172,7 +172,7 @@ public abstract class BaseViewActivity<P extends Presenter> extends BeamAppCompa
         emptyView=getEmptyView();
         setNoNetView(getNoNetView());
         onPreInitView();
-        initView();
+
 
     }
     protected void setNoNetView(View v){
@@ -181,6 +181,7 @@ public abstract class BaseViewActivity<P extends Presenter> extends BeamAppCompa
     @Override
     public void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
+        initView();
         SwipeBackHelper.onPostCreate(this);
     }
 

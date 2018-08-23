@@ -165,9 +165,15 @@ public abstract  class BaseViewFragment<P extends Presenter> extends BeamFragmen
         setNoNetView(getNoNetView());
         root_base=view;
         onPreInitView();
-        initView();
         return  view;
     }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        initView();
+    }
+
     protected void setNoNetView(View v){
         noNetView=v;
     }
