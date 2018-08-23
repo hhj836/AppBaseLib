@@ -29,7 +29,6 @@ public abstract class BaseViewActivity<P extends Presenter> extends BeamAppCompa
     };
     public   void onPreInitView(){};
     public abstract  int getLayoutId();
-    public abstract  void initView();
     //点击事件自行实现
     public View emptyView;
     public View noNetView;

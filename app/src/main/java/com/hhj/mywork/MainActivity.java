@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.hhj.appbase.base.RequiresPresenter;
+import com.hhj.appbase.utils.LibLogUtil;
 import com.hhj.appbase.utils.RxBus;
 import com.hhj.mywork.activity.BaseActivity;
 import com.hhj.mywork.activity.ImgListActivity;
@@ -41,6 +42,9 @@ public class MainActivity extends BaseActivity<MainPresenter> implements IMainAc
 
     @Override
     public void initView() {
+        Log.d("MainActivity", "init-initView");
+
+        LibLogUtil.info(MainActivity.class,"init-initView");
         isChange=!TextUtils.isEmpty(SkinPreference.getInstance().getSkinName());
        tv.setText("hahahahaha");
        new  RxBus.EventObserverBuilder<Event1>().create(this.bindToLifecycle()).setConsumer(new Consumer<Event1>() {

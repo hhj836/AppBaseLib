@@ -21,4 +21,5 @@ public interface ViewInterface {
     void showToast(String msg);
     //需要显示空布局，无网络布局，获取数据用此方法
     void refreshData();
+    void initView();
 }

@@ -47,7 +47,6 @@ public abstract  class BaseViewFragment<P extends Presenter> extends BeamFragmen
     public   void onPreInitView(){};
 
     public abstract  int getLayoutId();
-    public abstract void initView();
     public CommonTitleBar.OnTitleBarListener getTitleBarListener(){
         return new CommonTitleBar.OnTitleBarListener() {
             @Override

@@ -39,7 +39,7 @@ public class LibLogUtil {
 	/**
 	 * 当前阶段标示
 	 */
-	private static int currentStage = RELEASE;
+	private static int currentStage = DEVELOP;
 	private static String TAG="LOG";
 	private static String path;
 	private static File file;
