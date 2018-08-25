@@ -53,6 +53,7 @@ public class ImgListPresenter extends BaseListPresenter<IListView,Picture> {
 
     @Override
     public ListConfig<Picture> createListConfig() {
+
         View noNetView=View.inflate(getView().getActivityImp(),R.layout.test_empty,null);
         noNetView.setOnClickListener(new View.OnClickListener() {
             @Override
