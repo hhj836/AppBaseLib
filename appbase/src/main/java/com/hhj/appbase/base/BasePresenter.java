@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.content.Intent;
 import android.os.Parcelable;
+import android.support.annotation.NonNull;
 
 import com.hhj.appbase.list.IListView;
 
@@ -15,19 +16,19 @@ import static com.trello.rxlifecycle2.internal.Preconditions.checkNotNull;
  * Created by hhj on 2018/3/23.
  */
 
-public abstract class BasePresenter<ViewType> extends Presenter<ViewType> {
+public abstract class BasePresenter<ViewType extends ViewInterface> extends Presenter<ViewType> {
     public static final String KEY_ID = "intent_id";
     public static final String KEY_DATA = "intent_data";
     public  void initData(){
         if(getView() instanceof ViewInterface){
-            ((ViewInterface) getView()).hideEmptyView();
-            ((ViewInterface) getView()).hideNoNetView();
+            getView().hideEmptyView();
+            getView().hideNoNetView();
         }
     };
     public Activity getActivity(){
         Activity activity=null;
         if(getView() instanceof ViewInterface) {
-            activity =((ViewInterface) getView()).getActivityImp();
+            activity = getView().getActivityImp();
         }
         checkNotNull(activity,"activity is null--->"+getView().getClass().getSimpleName());
         return  activity;
@@ -38,10 +39,12 @@ public abstract class BasePresenter<ViewType> extends Presenter<ViewType> {
     public int getIntFromIntent(){
         return getActivity().getIntent().getIntExtra(KEY_ID,0);
     }
-    public <M> M getDataFromIntent(){
+    public <M> M getParcelableDataFromIntent(){
         return getActivity().getIntent().getParcelableExtra(KEY_DATA);
     }
-
+    public <M> M getSerializableDataFromIntent(){
+        return (M) getActivity().getIntent().getSerializableExtra(KEY_DATA);
+    }
     public void startActivity(Intent intent){
         getActivity().startActivity(intent);
     }

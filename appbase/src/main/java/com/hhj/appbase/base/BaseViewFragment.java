@@ -14,6 +14,8 @@ import com.hhj.appbase.R;
 import com.hhj.appbase.utils.ToastUtils;
 import com.hhj.appbase.view.titlebar.widget.CommonTitleBar;
 import com.trello.rxlifecycle2.LifecycleTransformer;
+import com.trello.rxlifecycle2.android.ActivityEvent;
+import com.trello.rxlifecycle2.android.FragmentEvent;
 
 
 /**
@@ -45,7 +47,6 @@ public abstract  class BaseViewFragment<P extends Presenter> extends BeamFragmen
     public   void onPreInitView(){};
 
     public abstract  int getLayoutId();
-    public abstract void initView();
     public CommonTitleBar.OnTitleBarListener getTitleBarListener(){
         return new CommonTitleBar.OnTitleBarListener() {
             @Override
@@ -114,7 +115,7 @@ public abstract  class BaseViewFragment<P extends Presenter> extends BeamFragmen
     }
     @Override
     public <T> LifecycleTransformer<T> getLifecycleTransFormer() {
-        return this.<T>bindToLifecycle();
+        return this.<T>bindUntilEvent(FragmentEvent.DESTROY);
     }
     @Override
     public void refreshData() {
@@ -163,9 +164,15 @@ public abstract  class BaseViewFragment<P extends Presenter> extends BeamFragmen
         setNoNetView(getNoNetView());
         root_base=view;
         onPreInitView();
-        initView();
         return  view;
     }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        initView();
+    }
+
     protected void setNoNetView(View v){
         noNetView=v;
     }

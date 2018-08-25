@@ -34,5 +34,8 @@ public final class Beam {
     public static void init(Context ctx){
         ModelManager.init(ctx);
     }
+    public static  void destroy(){
+        ModelManager.destroy();
+    }
 
 }

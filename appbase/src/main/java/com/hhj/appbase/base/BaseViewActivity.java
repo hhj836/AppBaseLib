@@ -13,6 +13,7 @@ import com.hhj.appbase.utils.ToastUtils;
 import com.hhj.appbase.view.titlebar.widget.CommonTitleBar;
 import com.jude.swipbackhelper.SwipeBackHelper;
 import com.trello.rxlifecycle2.LifecycleTransformer;
+import com.trello.rxlifecycle2.android.ActivityEvent;
 
 
 /**
@@ -28,7 +29,6 @@ public abstract class BaseViewActivity<P extends Presenter> extends BeamAppCompa
     };
     public   void onPreInitView(){};
     public abstract  int getLayoutId();
-    public abstract  void initView();
     //点击事件自行实现
     public View emptyView;
     public View noNetView;
@@ -118,9 +118,8 @@ public abstract class BaseViewActivity<P extends Presenter> extends BeamAppCompa
 
     @Override
     public <T> LifecycleTransformer<T> getLifecycleTransFormer() {
-        return this.<T>bindToLifecycle();
+        return this.<T>bindUntilEvent(ActivityEvent.DESTROY);
     }
-
     /**
      * 是否滑动titlebar
      * @return
@@ -172,7 +171,7 @@ public abstract class BaseViewActivity<P extends Presenter> extends BeamAppCompa
         emptyView=getEmptyView();
         setNoNetView(getNoNetView());
         onPreInitView();
-        initView();
+
 
     }
     protected void setNoNetView(View v){
@@ -181,6 +180,7 @@ public abstract class BaseViewActivity<P extends Presenter> extends BeamAppCompa
     @Override
     public void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
+        initView();
         SwipeBackHelper.onPostCreate(this);
     }
 

@@ -3,6 +3,7 @@ package com.hhj.mywork.presenter;
 import android.animation.Animator;
 import android.animation.ObjectAnimator;
 import android.support.annotation.NonNull;
+import android.util.Log;
 import android.view.View;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
@@ -11,6 +12,7 @@ import com.chad.library.adapter.base.animation.BaseAnimation;
 import com.hhj.appbase.list.BaseListPresenter;
 import com.hhj.appbase.list.IListView;
 import com.hhj.appbase.list.ListConfig;
+import com.hhj.appbase.utils.LibLogUtil;
 import com.hhj.appbase.utils.ToastUtils;
 import com.hhj.mywork.R;
 import com.hhj.mywork.activity.ImgListActivity;
@@ -28,6 +30,12 @@ import io.reactivex.Observable;
  */
 
 public class ImgListPresenter extends BaseListPresenter<IListView,Picture> {
+    @Override
+    protected void onCreateView(@NonNull IListView view) {
+        super.onCreateView(view);
+        Log.d("ImgListPresenter", "init-onCreateView");
+    }
+
     @Override
     public BaseQuickAdapter<Picture, BaseViewHolder> createAdapter() {
         ImgListAdapter adapter=new ImgListAdapter(new ArrayList<Picture>());

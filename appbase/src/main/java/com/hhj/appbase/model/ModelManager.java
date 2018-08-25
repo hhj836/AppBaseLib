@@ -14,9 +14,14 @@ import java.util.HashMap;
 public class ModelManager {
     
     private final static HashMap<Class<?>,AbsModel> mModelMap = new HashMap<>();
-    private final static BackThread mBackThread = new BackThread();
+    private static BackThread mBackThread = new BackThread();
     private static Context mApplication;
+    public static void destroy(){
+        mBackThread.quit();
+        mBackThread=new BackThread();
+        mModelMap.clear();
 
+    }
     public static void init(final Context ctx){
         mBackThread.start();
         mApplication = ctx;

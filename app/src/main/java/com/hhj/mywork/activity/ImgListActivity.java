@@ -15,6 +15,7 @@ import com.hhj.appbase.base.RequiresPresenter;
 import com.hhj.appbase.exception.ApiException;
 import com.hhj.appbase.list.BaseListActivity;
 import com.hhj.appbase.list.ListConfig;
+import com.hhj.appbase.utils.LibLogUtil;
 import com.hhj.appbase.view.titlebar.widget.CommonTitleBar;
 import com.hhj.mywork.R;
 import com.hhj.mywork.app.App;
@@ -61,6 +62,7 @@ public class ImgListActivity extends BaseListActivity<ImgListPresenter> implemen
 
     @Override
     public void initView() {
+        Log.d("ImgListPresenter", "init-initView");
        // setTitleText("图片列表");
         commonTitleBar.setDoubleClickListener(new CommonTitleBar.OnTitleBarDoubleClickListener() {
             @Override
