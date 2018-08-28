@@ -55,6 +55,12 @@ public abstract  class BaseListPresenter<T extends IListView,M> extends BasePres
         mAdapter=createAdapter();
         refreshObserver=mListConfig.refreshObserver==null?new DataObserver<List<M>>(getActivity()) {
             @Override
+            public void onError(Throwable e) {
+                super.onError(e);
+                getView().finishRefresh();
+            }
+
+            @Override
             public void onNext(@NonNull List<M> ms) {
                 getView().finishRefresh();
                 if(ms.size()==0){
@@ -67,6 +73,12 @@ public abstract  class BaseListPresenter<T extends IListView,M> extends BasePres
             }
         }:mListConfig.refreshObserver;
         lodMoreObserver=mListConfig.lodMoreObserver==null?new DataObserver<List<M>>(getActivity()) {
+            @Override
+            public void onError(Throwable e) {
+                super.onError(e);
+                getView().finishLoadMore(false);
+            }
+
             @Override
             public void onNext(@NonNull List<M> ms) {
                 getView().finishLoadMore(ms.size()==0);

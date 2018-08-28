@@ -46,6 +46,10 @@ public class ListConfig<M>  {
             return  Builder.this;
 
         }
+        public Builder<M> setIsShowEmpty(boolean  show){
+            target.isShowEmpty=show;
+            return  Builder.this;
+        }
         public Builder<M> setLoadMoreAble(boolean  enable){
             target.mLoadMoreAble=enable;
             return  Builder.this;
