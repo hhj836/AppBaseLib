@@ -15,6 +15,7 @@ import io.reactivex.Observer;
  */
 
 public class ListConfig<M>  {
+    public boolean isShowEmpty=true;
     public boolean mRefreshAble=true;
     public boolean mLoadMoreAble=true;
     public boolean mAutoLoadMore=true;

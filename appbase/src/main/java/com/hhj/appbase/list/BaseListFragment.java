@@ -26,6 +26,10 @@ public abstract class BaseListFragment<P extends BaseListPresenter> extends Base
     public SmartRefreshLayout refreshLayout;
     public RecyclerView recyclerView;
     private ListConfig mListConfig;
+    private View emptyView;
+    public View getEmptyView(){
+        return emptyView;
+    }
 
 
     @Override
@@ -94,7 +98,9 @@ public abstract class BaseListFragment<P extends BaseListPresenter> extends Base
             ViewGroup group= (ViewGroup) getPresenter().getAdapter().getEmptyView().getParent();
             group.removeView(getPresenter().getAdapter().getEmptyView());
         }
-
+        if(mListConfig.isShowEmpty){
+            emptyView=View.inflate(mActivity,mListConfig.mContainerEmptyResId==0?R.layout.empty_view:mListConfig.mContainerEmptyResId,null);
+        }
         recyclerView.setAdapter(getPresenter().getAdapter());
         getPresenter().onRefresh(refreshLayout);
 
@@ -122,9 +128,12 @@ public abstract class BaseListFragment<P extends BaseListPresenter> extends Base
     }
     @Override
     public void showEmptyView(){
-        if( getPresenter().getAdapter().getEmptyViewCount()==0){
-            View  emptyView=View.inflate(mActivity,mListConfig.mContainerEmptyResId==0?R.layout.empty_view:mListConfig.mContainerEmptyResId,null);
-            getPresenter().getAdapter().setEmptyView(emptyView);
+        if(emptyView!=null){
+            if( getPresenter().getAdapter().getEmptyViewCount()==0){
+                getPresenter().getAdapter().setEmptyView(emptyView);
+
+            }
         }
+
     }
 }
