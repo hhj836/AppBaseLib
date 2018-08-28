@@ -76,12 +76,12 @@ public abstract  class BaseListPresenter<T extends IListView,M> extends BasePres
             @Override
             public void onError(Throwable e) {
                 super.onError(e);
-                getView().finishLoadMore(true);
+                getView().finishLoadMore(false,false);
             }
 
             @Override
             public void onNext(@NonNull List<M> ms) {
-                getView().finishLoadMore(ms.size()==0);
+                getView().finishLoadMore(ms.size()==0,true);
                 if(ms.size()!=0){
                     mAdapter.addData(ms);
                     onPageChange(ms.size());
@@ -96,6 +96,9 @@ public abstract  class BaseListPresenter<T extends IListView,M> extends BasePres
         page=0;
         refreshLayout.finishLoadMore();
         refreshLayout.setNoMoreData(false);
+        if(mListConfig.mLoadMoreAble){
+            refreshLayout.setEnableLoadMore(true);
+        }
     }
 
     @Override
