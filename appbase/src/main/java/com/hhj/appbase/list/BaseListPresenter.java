@@ -76,7 +76,7 @@ public abstract  class BaseListPresenter<T extends IListView,M> extends BasePres
             @Override
             public void onError(Throwable e) {
                 super.onError(e);
-                getView().finishLoadMore(false);
+                getView().finishLoadMore(true);
             }
 
             @Override
