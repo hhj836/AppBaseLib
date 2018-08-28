@@ -46,6 +46,7 @@ public abstract class BaseListActivity<P extends BaseListPresenter> extends Base
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         mListConfig=getPresenter().getListConfig();
         refreshLayout=findViewById(R.id.refreshLayout);
