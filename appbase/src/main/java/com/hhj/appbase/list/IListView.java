@@ -11,7 +11,7 @@ import com.hhj.appbase.base.ViewInterface;
 
 public interface IListView extends ViewInterface{
      void finishRefresh();
-     void  finishLoadMore(boolean noMore);
+     void  finishLoadMore(boolean noMore,boolean success);
      void initList();
      RecyclerView.LayoutManager createLayoutManger();
      RecyclerView.ItemDecoration createItemDecoration();

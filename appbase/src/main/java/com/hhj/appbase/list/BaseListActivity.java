@@ -109,14 +109,22 @@ public abstract class BaseListActivity<P extends BaseListPresenter> extends Base
     }
 
     @Override
-    public void  finishLoadMore(boolean noMore){
+    public void  finishLoadMore(boolean noMore,boolean success){
+        if(!success){
+            refreshLayout.finishLoadMore(false);
+            refreshLayout.setEnableLoadMore(false);
+            return;
+        }
+
         if(noMore){
             refreshLayout.finishLoadMoreWithNoMoreData();
         }else {
             refreshLayout.finishLoadMore();
+
         }
 
     }
+
 
     @Override
     public void refreshData() {

@@ -117,8 +117,14 @@ public abstract class BaseListFragment<P extends BaseListPresenter> extends Base
         super.refreshData();
         refreshLayout.autoRefresh();
     }
+
     @Override
-    public void  finishLoadMore(boolean noMore){
+    public void  finishLoadMore(boolean noMore,boolean success){
+        if(!success){
+            refreshLayout.finishLoadMore(false);
+            refreshLayout.setEnableLoadMore(false);
+            return;
+        }
         if(noMore){
             refreshLayout.finishLoadMoreWithNoMoreData();
         }else {
