@@ -66,6 +66,7 @@ public abstract  class BaseListPresenter<T extends IListView,M> extends BasePres
                 if(ms.size()==0){
                     mAdapter.setNewData(ms);
                     getView().showEmptyView();
+
                 }else {
                     mAdapter.setNewData(ms);
                     onPageChange(ms.size());
