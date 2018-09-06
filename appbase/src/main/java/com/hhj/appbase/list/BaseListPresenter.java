@@ -62,6 +62,7 @@ public abstract  class BaseListPresenter<T extends IListView,M> extends BasePres
                     getView().showEmptyView();
                 }else {
                     mAdapter.setNewData(ms);
+                    onPageChange(ms.size());
                 }
 
             }
