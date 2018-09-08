@@ -163,6 +163,9 @@ public abstract  class BaseViewFragment<P extends Presenter> extends BeamFragmen
         emptyView=getEmptyView();
         setNoNetView(getNoNetView());
         root_base=view;
+        if(commonTitleBar!=null){
+            commonTitleBar.setListener(getTitleBarListener());
+        }
         onPreInitView();
         return  view;
     }

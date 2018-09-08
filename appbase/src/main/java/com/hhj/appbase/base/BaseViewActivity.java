@@ -170,6 +170,9 @@ public abstract class BaseViewActivity<P extends Presenter> extends BeamAppCompa
         }
         emptyView=getEmptyView();
         setNoNetView(getNoNetView());
+        if(commonTitleBar!=null){
+            commonTitleBar.setListener(getTitleBarListener());
+        }
         onPreInitView();
 
 
