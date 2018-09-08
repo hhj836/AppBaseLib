@@ -69,8 +69,15 @@ public abstract class BaseListActivity<P extends BaseListPresenter> extends Base
             internalClassics.setFinishDuration(0);
         }
         if(mListConfig.srlPrimaryColor!=0||mListConfig.srlAccentColor!=0){
-            refreshLayout.getRefreshHeader().setPrimaryColors(mListConfig.srlPrimaryColor==0?getResources().getColor(R.color.base_default_refresh_bg):
-                    mListConfig.srlPrimaryColor,mListConfig.srlAccentColor==0?Color.WHITE:mListConfig.srlAccentColor);
+            if(refreshLayout.getRefreshHeader()!=null){
+                refreshLayout.getRefreshHeader().setPrimaryColors(mListConfig.srlPrimaryColor==0?getResources().getColor(R.color.base_default_refresh_bg):
+                        mListConfig.srlPrimaryColor,mListConfig.srlAccentColor==0? Color.WHITE:mListConfig.srlAccentColor);
+            }
+            if(refreshLayout.getRefreshFooter()!=null){
+                refreshLayout.getRefreshFooter().setPrimaryColors(mListConfig.srlPrimaryColor==0?getResources().getColor(R.color.base_default_refresh_bg):
+                        mListConfig.srlPrimaryColor,mListConfig.srlAccentColor==0? Color.WHITE:mListConfig.srlAccentColor);
+            }
+
         }
         if(createLayoutManger()!=null){
             recyclerView.setLayoutManager(createLayoutManger());
