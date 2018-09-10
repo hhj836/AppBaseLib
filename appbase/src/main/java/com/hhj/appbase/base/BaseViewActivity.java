@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.hhj.appbase.R;
@@ -152,9 +153,9 @@ public abstract class BaseViewActivity<P extends Presenter> extends BeamAppCompa
         if(getTitleResId()!=0){
             setContentView(R.layout.ac_base_view);
              appBarLayout_base=findViewById(R.id.appbar_base);
-            RelativeLayout rl_title=findViewById(R.id.rl_title);
+            LinearLayout ll_title=findViewById(R.id.ll_title);
             commonTitleBar= (CommonTitleBar) View.inflate(BaseViewActivity.this,getTitleResId(),null);
-            rl_title.addView(commonTitleBar);
+            ll_title.addView(commonTitleBar);
             if(!isSlideTitleBar()){
                 disableTitleSlide();
             }
@@ -164,8 +165,7 @@ public abstract class BaseViewActivity<P extends Presenter> extends BeamAppCompa
                 fm_content_base.addView(content);
             }
         }else {
-            View content=getLayoutInflater().inflate(getLayoutId(),null);
-            setContentView(content);
+            setContentView(getLayoutId());
 
         }
         emptyView=getEmptyView();

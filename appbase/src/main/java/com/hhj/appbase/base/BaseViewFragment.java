@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.hhj.appbase.R;
@@ -145,9 +146,9 @@ public abstract  class BaseViewFragment<P extends Presenter> extends BeamFragmen
         if(getTitleResId()!=0){
             view=inflater.inflate(R.layout.ac_base_view,null);
             appBarLayout_base=view.findViewById(R.id.appbar_base);
-            RelativeLayout rl_title=view.findViewById(R.id.rl_title);
+            LinearLayout ll_title=view.findViewById(R.id.ll_title);
             commonTitleBar= (CommonTitleBar) View.inflate(mActivity,getTitleResId(),null);
-            rl_title.addView(commonTitleBar);
+            ll_title.addView(commonTitleBar);
             if(!isSlideTitleBar()){
                 disableTitleSlide();
             }
