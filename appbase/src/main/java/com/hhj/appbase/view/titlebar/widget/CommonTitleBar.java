@@ -281,12 +281,12 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
         setLayoutParams(globalParams);
 
         // 构建标题栏填充视图
-        boolean supportStatusBarLightMode = false;
-        try {
+        boolean supportStatusBarLightMode = true;
+       /* try {
             supportStatusBarLightMode = AppUtils.supportStatusBarLightMode(getContext());
         } catch (ClassCastException e) {
             e.printStackTrace();
-        }
+        }*/
         if (fillStatusBar && supportStatusBarLightMode) {
             int statusBarHeight = AppUtils.getStatusBarHeight(context);
             viewStatusBarFill = new View(context);
