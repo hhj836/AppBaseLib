@@ -1,8 +1,12 @@
 package com.hhj.appbase.base;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.SystemClock;
+import android.support.annotation.Nullable;
 import android.support.design.widget.AppBarLayout;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -191,5 +195,46 @@ public abstract class BaseViewActivity<P extends Presenter> extends BeamAppCompa
     protected void onDestroy() {
         super.onDestroy();
         SwipeBackHelper.onDestroy(this);
+    }
+    @SuppressLint("RestrictedApi")
+    @Override
+    public void startActivityForResult(Intent intent, int requestCode, @Nullable Bundle options) {
+        if (startActivitySelfCheck(intent)) {
+            // 查看源码得知 startActivity 最终也会调用 startActivityForResult
+            super.startActivityForResult(intent, requestCode, options);
+        }
+    }
+
+    private String mActivityJumpTag;
+    private long mActivityJumpTime;
+
+    /**
+     * 检查当前 Activity 是否重复跳转了，不需要检查则重写此方法并返回 true 即可
+     *
+     * @param intent          用于跳转的 Intent 对象
+     * @return                检查通过返回true, 检查不通过返回false
+     */
+    protected boolean startActivitySelfCheck(Intent intent) {
+        // 默认检查通过
+        boolean result = true;
+        // 标记对象
+        String tag;
+        if (intent.getComponent() != null) { // 显式跳转
+            tag = intent.getComponent().getClassName();
+        }else if (intent.getAction() != null) { // 隐式跳转
+            tag = intent.getAction();
+        }else {
+            return result;
+        }
+
+        if (tag.equals(mActivityJumpTag) && mActivityJumpTime >= SystemClock.uptimeMillis() - 500) {
+            // 检查不通过
+            result = false;
+        }
+
+        // 记录启动标记和时间
+        mActivityJumpTag = tag;
+        mActivityJumpTime = SystemClock.uptimeMillis();
+        return result;
     }
 }
